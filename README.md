@@ -19,7 +19,18 @@ The kw6502 emulates the full set of legal opcodes, 151 in total. The unofficial 
 
 ## Inputing the program
 
-At the moment, the only way to input a program is by using a plain-text hexdump-like file. The emulator does not care about the formatting of the file, however, if the first column contains addresses, **they will be ignored** and the program will begin at the default starting point (PC=$0600). In this case, the flag `addresses` (-a, --addresses) needs to be passed as a command line argument.
+At the moment, the only way to input a program is by using a plain-text hexdump-like file. The emulator does not care about the formatting of the file, it just reads space-separated hexadecimal bytes. However, if the first column contains addresses, **they will be ignored** and the program will begin at the default starting point (PC=$0600). In this case, the flag `addresses` (-a, --addresses) needs to be passed as a command line argument. Suppose that the `hexprogram.txt` file contains the following lines:
+```
+0600: a9 8a 48 a9 3f 48 a9 24 48 a9 b3 48 20 12 06 4c 
+0610: 63 06 68 85 00 68 85 01 68 85 02 68 85 03 68 85 
+0620: 04 68 85 05 18 a5 03 65 05 48 a5 02 65 04 48 a5 
+0630: 01 48 a5 00 48 60 a9 0f 48 a9 0f 48 20 44 06 a2 
+0640: 60 4c 63 06 68 85 00 68 85 01 68 aa 68 85 02 a9 
+0650: 00 18 65 02 ca c8 e0 00 d0 f7 aa a5 01 48 a5 00 
+0660: 48 8a 40 a2 50 00 00 00 00 00 00 00 00 00 00 00
+```
+Then in order to run such program, the following command should used:
+> kw6502 path/to/hexprogram.rs -a
 
 ## Notation
 
