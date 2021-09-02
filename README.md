@@ -42,7 +42,7 @@ Example:
 
 ### For the opcodes
 
-Opcodes ('operation codes') are stored as public `u8` constants of the the [P6502 type](p6502.rs). They are stored in the following format:
+Opcodes ('operation codes') are stored as public `u8` constants of the the [P6502 type](src/p6502.rs). They are stored in the following format:
 >INS_ + INSTRUCTION_ + ADDRESSING MODE
 
 where *INS_* is a common prefix, *INSTRUCTION* is the mnemonic for the opcode and *ADDRESSING MODE* is the abbreviation of the addressing mode for the instruction. If no addressing mode is specified, then it is assumed to be Implicit. For example, `INS_LDA_IMM` represents the LDA instruction and the Immediate addressing mode. The abbreviations used are listed in the following table:
