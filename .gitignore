@@ -1,0 +1,7 @@
+/target
+/python
+/.vscode
+Cargo.lock
+opcodeduration.rs
+*.txt
+assembler.rs
