@@ -1567,7 +1567,7 @@ impl P6502 {
         self.memory.write(addr as usize, data);
         self.clock_tick(1);
     }
-
+    /// Runs an interactive prompt once the program is finished.
     pub fn interactive(&self) {
         let mut copper: Copperline = Copperline::new();
 
