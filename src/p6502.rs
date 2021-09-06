@@ -485,7 +485,7 @@ impl P6502 {
 
                 P6502::INS_LDY_ZPX => {
                     let addr: u8 = self.next_byte();
-                    self.x = self.read_byte_from_addr(addr.saturating_add(self.x) as u16);
+                    self.y = self.read_byte_from_addr(addr.saturating_add(self.x) as u16);
 
                     self.flags.z = self.y == 0;
                     self.flags.n = (self.y & 0b10000000) > 0;
@@ -493,7 +493,7 @@ impl P6502 {
 
                 P6502::INS_LDY_ABS => {
                     let addr: u16 = self.next_word();
-                    self.x = self.read_byte_from_addr(addr);
+                    self.y = self.read_byte_from_addr(addr);
 
                     self.flags.z = self.y == 0;
                     self.flags.n = (self.y & 0b10000000) > 0;
@@ -501,7 +501,7 @@ impl P6502 {
 
                 P6502::INS_LDY_ABX => {
                     let addr: u16 = self.next_word();
-                    self.x = self.read_byte_from_addr(addr + self.x as u16);
+                    self.y = self.read_byte_from_addr(addr + self.x as u16);
 
                     self.flags.z = self.y == 0;
                     self.flags.n = (self.y & 0b10000000) > 0;
@@ -709,7 +709,7 @@ impl P6502 {
 
                 P6502::INS_STX_ZPY => {
                     let zp_addr: u8 = self.next_byte();
-                    self.write_byte_to_addr(zp_addr.wrapping_add(self.x) as u16, self.x);
+                    self.write_byte_to_addr(zp_addr.wrapping_add(self.y) as u16, self.x);
                     self.clock_tick(1);
                 }
 
